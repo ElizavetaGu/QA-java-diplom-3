@@ -10,11 +10,7 @@ import static com.codeborne.selenide.Selenide.page;
 public class RegisterPage {
     //локатор поля имя
     @FindBy(how = How.NAME,using="name")
-    private ElementsCollection nameAndEmailFields;
-
-    //локатор поля email
-    //@FindBy(how = How.NAME,using="name")
-    //private SelenideElement emailField;
+    ElementsCollection nameAndEmailFields;
 
     //локатор поля пароль
     @FindBy(how = How.NAME,using="Пароль")

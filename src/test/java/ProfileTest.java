@@ -2,6 +2,7 @@ import com.UserOperations;
 import com.pageobject.LoginPage;
 import com.pageobject.MainPage;
 import com.pageobject.ProfilePage;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,7 +31,7 @@ public class ProfileTest {
         userEmail = userData.get("email");
         userName = userData.get("name");
 
-        browser = "firefox";
+        browser = "chrome";
         LoginPage loginPage =
                 open("https://stellarburgers.nomoreparties.site/login", LoginPage.class);
         mainPage = loginPage.login(userEmail, userPassword);
@@ -43,12 +44,14 @@ public class ProfileTest {
     }
 
     @Test
+    @DisplayName("Check that a user can logout")
     public void checkLogout() {
         LoginPage loginPage = profilePage.logout();
         loginPage.getEnterButton().should(exist);
     }
 
     @Test
+    @DisplayName("Check that a user can go to the constructor from the profile page")
     public void checkGoToConstructor(){
         MainPage mainPage = profilePage.goToConstructor();
         mainPage.getSauces().should(exist);
@@ -59,6 +62,7 @@ public class ProfileTest {
     }
 
     @Test
+    @DisplayName("Check that a user can go to the main page from the profile page using stellar burgers logo")
     public void checkGoToMainPage(){
         MainPage mainPage = profilePage.goToMainPage();
         mainPage.getSauces().should(exist);
@@ -69,6 +73,7 @@ public class ProfileTest {
     }
 
     @Test
+    @DisplayName("Check that a user can go to the profile page")
     public void checkGoToProfilePage(){
         profilePage.getProfileButton().should(exist);
         Assert.assertEquals(userEmail, profilePage.getEmail());

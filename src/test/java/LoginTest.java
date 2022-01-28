@@ -1,5 +1,6 @@
 import com.UserOperations;
 import com.pageobject.*;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -26,7 +27,7 @@ public class LoginTest {
         userEmail = userData.get("email");
         userName = userData.get("name");
 
-        browser = "firefox";
+        browser = "chrome";
         mainPage =
                 open("https://stellarburgers.nomoreparties.site", MainPage.class);
     }
@@ -37,6 +38,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Check that a user can login using a button on the main page")
     public void checkLoginViaMainPage() {
         LoginPage loginPage = mainPage.login();
 
@@ -48,6 +50,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Check that a user can login using a profile button")
     public void checkLoginViaProfilePage(){
         LoginPage loginPage = mainPage.loginViaProfilePage();
 
@@ -59,6 +62,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Check that a user can login using a button on the registration page")
     public void checkLoginViaRegisterPage(){
         LoginPage loginPage0 = mainPage.login();
         RegisterPage registerPage = loginPage0.signUp();
@@ -72,6 +76,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Check that a user can login using a button on the forgot password page")
     public void checkLoginViaForgotPasswordPage(){
         LoginPage loginPage0 = mainPage.login();
         ForgotPasswordPage forgotPasswordPage = loginPage0.restorePassword();

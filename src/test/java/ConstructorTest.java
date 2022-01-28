@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.pageobject.LoginPage;
 import com.pageobject.MainPage;
 import com.pageobject.ProfilePage;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,10 +21,11 @@ public class ConstructorTest {
 
     @Before
     public void setUp(){
-        browser = "firefox";
+        browser = "chrome";
     }
 
     @Test
+    @DisplayName("Check that an authorized user can switch between constructor tabs")
     public void checkConstructorTabsWithLogin(){
         UserOperations userOperations = new UserOperations();
         Map<String, String> userData = userOperations.register();
@@ -47,6 +49,7 @@ public class ConstructorTest {
     }
 
     @Test
+    @DisplayName("Check that an unauthorized user can switch between constructor tabs")
     public void checkConstructorTabsWithoutLogin(){
         MainPage mainPage =
                 open("https://stellarburgers.nomoreparties.site", MainPage.class);
