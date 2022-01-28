@@ -13,8 +13,8 @@ public class RegisterPage {
     private ElementsCollection nameAndEmailFields;
 
     //локатор поля email
-    @FindBy(how = How.NAME,using="name")
-    private SelenideElement emailField;
+    //@FindBy(how = How.NAME,using="name")
+    //private SelenideElement emailField;
 
     //локатор поля пароль
     @FindBy(how = How.NAME,using="Пароль")
@@ -30,6 +30,15 @@ public class RegisterPage {
 
     @FindBy(how = How.XPATH,using = ".//p[text()='Некорректный пароль']")
     private SelenideElement passwordError;
+
+    //локатор кнопки личный кабинет
+    @FindBy(how = How.XPATH,using = ".//p[text()='Личный Кабинет']")
+    private SelenideElement profilePageButton;
+
+    public ProfilePage goToProfilePage(){
+        profilePageButton.click();
+        return page(ProfilePage.class);
+    }
 
     public void setNameField(String name){
         nameAndEmailFields.get(0).setValue(name);

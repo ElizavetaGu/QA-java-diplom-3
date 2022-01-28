@@ -17,7 +17,7 @@ public class ProfilePage {
     private SelenideElement stellarBurgersButton;
 
     //локатор кнопки профиль
-    @FindBy(how = How.XPATH,using=".//button[text()='Профиль']")
+    @FindBy(how = How.XPATH,using=".//a[text()='Профиль']")
     private SelenideElement profileButton;
 
     //локатор кнопки выйти

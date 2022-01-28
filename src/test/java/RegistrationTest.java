@@ -39,13 +39,4 @@ public class RegistrationTest {
         Assert.assertEquals(name, profilePage.getName());
         Assert.assertEquals(email.toLowerCase(), profilePage.getEmail().toLowerCase());
     }
-
-    @Test
-    public void checkRegistrationWithIncorrectPassword() {
-        registerPage.setRegisterFields(name, email, RandomStringUtils.randomAlphabetic(5));
-        registerPage.submitRegistration();
-
-        String actualError = registerPage.getPasswordError();
-        Assert.assertEquals("Некорректный пароль", actualError);
-    }
 }
