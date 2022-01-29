@@ -1,6 +1,7 @@
 package com.pageobject;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -27,14 +28,17 @@ public class LoginPage {
     @FindBy(how = How.LINK_TEXT,using="Зарегистрироваться")
     private SelenideElement signUpButton;
 
+    @Step("Set email")
     public void setEmailField(String email){
         emailField.setValue(email);
     }
 
+    @Step("Set password")
     public void setPasswordField(String password){
         passwordField.setValue(password);
     }
 
+    @Step("Confirm login")
     public MainPage confirmLogin(){
         enterButton.click();
         return page(MainPage.class);
@@ -46,16 +50,19 @@ public class LoginPage {
         return confirmLogin();
     }
 
+    @Step("Go to register page")
     public RegisterPage signUp(){
         signUpButton.click();
         return page(RegisterPage.class);
     }
 
+    @Step("Go to restore password page")
     public ForgotPasswordPage restorePassword(){
         restorePassword.click();
         return page(ForgotPasswordPage.class);
     }
 
+    @Step("Find login button")
     public SelenideElement getEnterButton(){
         return enterButton;
     }

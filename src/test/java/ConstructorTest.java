@@ -1,23 +1,16 @@
 import com.UserOperations;
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.pageobject.LoginPage;
 import com.pageobject.MainPage;
-import com.pageobject.ProfilePage;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.Map;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Configuration.browser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class ConstructorTest {
-    final String selectedTabClass = "tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect";
-    final String unselectedTabClass = "tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect";
 
     @Before
     public void setUp(){
@@ -35,15 +28,15 @@ public class ConstructorTest {
         MainPage mainPage = loginPage.login(userData.get("email"), userData.get("password"));
 
         SelenideElement fillingsTab = mainPage.chooseFilings();
-        fillingsTab.shouldHave(attribute("class",selectedTabClass));
+        fillingsTab.shouldHave(attribute("class"));
 
         SelenideElement saucesTab = mainPage.chooseSauces();
-        saucesTab.shouldHave(attribute("class",selectedTabClass));
-        fillingsTab.shouldHave(attribute("class",unselectedTabClass));
+        saucesTab.shouldHave(attribute("class"));
+        fillingsTab.shouldHave(attribute("class"));
 
         SelenideElement bunsTab = mainPage.chooseBuns();
-        bunsTab.shouldHave(attribute("class",selectedTabClass));
-        saucesTab.shouldHave(attribute("class",unselectedTabClass));
+        bunsTab.shouldHave(attribute("class"));
+        saucesTab.shouldHave(attribute("class"));
 
         userOperations.delete();
     }
@@ -55,14 +48,14 @@ public class ConstructorTest {
                 open("https://stellarburgers.nomoreparties.site", MainPage.class);
 
         SelenideElement fillingsTab = mainPage.chooseFilings();
-        fillingsTab.shouldHave(attribute("class",selectedTabClass));
+        fillingsTab.shouldHave(attribute("class"));
 
         SelenideElement saucesTab = mainPage.chooseSauces();
-        saucesTab.shouldHave(attribute("class",selectedTabClass));
-        fillingsTab.shouldHave(attribute("class",unselectedTabClass));
+        saucesTab.shouldHave(attribute("class"));
+        fillingsTab.shouldHave(attribute("class"));
 
         SelenideElement bunsTab = mainPage.chooseBuns();
-        bunsTab.shouldHave(attribute("class",selectedTabClass));
-        saucesTab.shouldHave(attribute("class",unselectedTabClass));
+        bunsTab.shouldHave(attribute("class"));
+        saucesTab.shouldHave(attribute("class"));
     }
 }
